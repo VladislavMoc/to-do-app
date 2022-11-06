@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 function TodoForm(props) {
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(props.editTask ? props.editTask.value : '');
 
     const inputRef = useRef(null);
 
@@ -16,7 +16,7 @@ function TodoForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.onSubmit({
-            id: Math.floor(Math.random() * 10000),
+            id: props.editTask ? props.editTask.id : Math.floor(Math.random() * 10000),
             text: input
         })
         setInput('');
@@ -24,15 +24,19 @@ function TodoForm(props) {
 
     return (
         <form className='task-input-form' onSubmit={handleSubmit}>
-            <input
+            <textarea
                 type='text'
                 value={input}
                 onChange={handleChange}
-                placeholder='Введите задачу здесь'
+                placeholder={(props.editTask) ? 'Внесите корректировку в задачу' : 'Введите новую задачу'}
                 name='text'
-                ref={inputRef}
-                 />
-            <input type='submit' className='task-submit-button' value='Submit task' />
+                ref={inputRef}>
+            </textarea>
+            <input 
+            type='submit' 
+            className='task-submit-button' 
+            value={(props.editTask) ? 'Добавить корректировку' : 'Добавить задачу'} 
+            />
         </form>
     )
 }

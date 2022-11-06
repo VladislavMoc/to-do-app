@@ -25,7 +25,7 @@ function TodoTask({ tasks, completeTask, removeTask, updateTask }) {
         <div className={task.isComplete ? 'taskItem complete' : 'taskItem'} key={index}>
             <div className="task-info">
                 <input type='checkbox' onChange={() => completeTask(task.id)} />
-                <div key={task.id} >
+                <div key={task.id} className="task-description">
                     {task.text}
                 </div>
             </div>
@@ -39,7 +39,7 @@ function TodoTask({ tasks, completeTask, removeTask, updateTask }) {
                         id: task.id,
                         value: task.text
                     })}
-                    className='edit-task-icon '
+                    className='edit-task-icon'
                 />
             </div>
         </div>
