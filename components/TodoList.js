@@ -29,8 +29,6 @@ function TodoList() {
         setTasks((prev) => prev.map((task) => (task.id === taskId ? newValue : task)));
     }
 
-    console.log(tasks)
-
     return (
         <div className='to-do-list'>
             <h1>Список задач</h1>
