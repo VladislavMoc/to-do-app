@@ -1,0 +1,52 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+.todolist-app {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0;
+margin: 0;
+}
+
+.task-input-form {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.task-input-form input[type=text]{
+height: 50px;
+min-width: 300px;
+}
+
+.task-input-form input[type=submit]{
+margin-top: 15px;
+margin-bottom: 10px;
+}
+
+.task-info {
+  display: flex;
+}
+
+.to-do-list {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+.taskItem {
+min-width: 290px;
+border: 1px solid rgb(197, 197, 197);
+display: flex;
+justify-content: space-between;
+padding: 5px;
+margin-top: 5px;
+align-items: center;
+}
+.complete {
+  background-color: rgb(175, 226, 175);
+}
