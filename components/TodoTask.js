@@ -21,29 +21,62 @@ function TodoTask({ tasks, completeTask, removeTask, updateTask }) {
         return <TodoForm editTask={editTask} onSubmit={submitUpdate} />
     };
 
-    return tasks.map((task, index) => (
-        <div className={task.isComplete ? 'taskItem complete' : 'taskItem'} key={index}>
-            <div className="task-info">
-                <input type='checkbox' onChange={() => completeTask(task.id)} />
-                <div key={task.id} className="task-description">
-                    {task.text}
-                </div>
+    return (
+        <div>
+            <div className='tasks-to-be-done'>
+                {tasks.map((task, index) => (
+                    <div className={task.isComplete ? 'taskItem complete hidden' : 'taskItem'} key={index}>
+                        <div className="task-info">
+                            <input
+                                type='checkbox'
+                                onChange={() => completeTask(task.id)}
+                                checked={task.isComplete} />
+                            <div key={task.id} className="task-description">
+                                {task.text}
+                            </div>
+                        </div>
+                        <div className='icons'>
+                            <MdOutlineClose
+                                onClick={() => removeTask(task.id)}
+                                className='delete-task-icon'
+                            />
+                            <BiEditAlt
+                                onClick={() => setEditTask({
+                                    id: task.id,
+                                    value: task.text
+                                })}
+                                className='edit-task-icon'
+                            />
+                        </div>
+                    </div>
+                )
+                )}
             </div>
-            <div className='icons'>
-                <MdOutlineClose
-                    onClick={() => removeTask(task.id)}
-                    className='delete-task-icon'
-                />
-                <BiEditAlt
-                    onClick={() => setEditTask({
-                        id: task.id,
-                        value: task.text
-                    })}
-                    className='edit-task-icon'
-                />
+            <div className='tasks-completed'>
+                <h2>Выполненные задачи</h2>
+                {tasks.map((task, index) => (
+                    <div className={task.isComplete ? 'taskItem complete' : 'taskItem hidden'} key={index}>
+                        <div className="task-info">
+                            <input
+                                type='checkbox'
+                                onChange={() => completeTask(task.id)}
+                                checked={task.isComplete} />
+                            <div key={task.id} className="task-description">
+                                {task.text}
+                            </div>
+                        </div>
+                        <div className='icons'>
+                            <MdOutlineClose
+                                onClick={() => removeTask(task.id)}
+                                className='delete-task-icon'
+                            />
+                        </div>
+                    </div>
+                )
+                )}
             </div>
         </div>
-    ))
+    )
 }
 
 export default TodoTask

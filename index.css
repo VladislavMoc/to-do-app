@@ -64,3 +64,13 @@ align-items: center;
   margin-right: 5px;
   vertical-align: middle;
 }
+
+.hidden {
+  display: none;
+}
+
+.tasks-completed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
